@@ -1,0 +1,58 @@
+ScreenManagement:
+    LoginPage:
+    UserPage:
+
+<TextInput>:
+    font_size: 25
+    color: 0.1,0.5,0.6,1
+    size_hint: 0.3, 0.08
+
+<Label>:
+    font_size: 20
+    color: 0, 0, 0, 1
+
+<Button>:
+    font_size: 30
+    color: 1, 1, 1, 1
+    size_hint: 0.3, 0.08
+
+<LoginPage>:
+    name: "login_page"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            #color: 1, 1, 1, 1
+            #source: '/home/spaceagle/Pictures/tesla_model_y.jpg'
+    FloatLayout:
+        Image:
+            source: '/home/spaceagle/Pictures/tesla_model_y.jpg'
+            size_hint: 0.2, 0.2
+            pos_hint: {"x":0.5-(self.size_hint_x)/2, "y":0.8}
+        Label:
+            id: username_label
+            pos_hint: {"x":0, "y":0.25}
+            text: 'Username'
+        TextInput:
+            id: user
+            pos_hint: {"x":0.5-(self.size_hint_x)/2, "y":0.65}
+        Label:
+            id: password_label
+            pos_hint: {"x":0.5-(self.size_hint_x)/2, "y":0.1}
+            text: 'Password'
+        TextInput:
+            id: passw
+            password: True # hide password
+            pos_hint: {"x":0.5-(self.size_hint_x)/2, "y":0.5}
+        Button:
+            text: "Login"
+            on_release: root.verify_credentials()
+            pos_hint: {"x":0.5-(self.size_hint_x)/2, "y":0.35}
+            background_color: 0.01, 0.9, 0.02, 1
+
+<UserPage>:
+    name: "user"
+    Button:
+        text: "back"
+        on_release: app.root.current = "login_page"
+        pos_hint: {"x":0.5-(self.size_hint_x)/2, "y":0.5}
